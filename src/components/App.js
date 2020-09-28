@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared"
 import DashBoard from "./DashBoard"
+import LoadingBar from 'react-redux-loading'
 import Poll from './Poll'
 import NewPoll from './NewPoll'
 import Nav from './Nav'
@@ -16,6 +17,7 @@ class App extends Component {
         return (
             <Router>
                 <Fragment>
+                    <LoadingBar />
                     <div className='container'>
                         <Nav />
                         {this.props.loading === true
