@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared"
 import DashBoard from "./DashBoard"
 import Poll from './Poll'
 import NewPoll from './NewPoll'
-
+import Nav from './Nav'
 
 class App extends Component {
     componentDidMount() {
@@ -13,13 +14,21 @@ class App extends Component {
     
     render() {
         return (
-            <div>
-                {this.props.loading === true
-                    ? null
-                    : <NewPoll />
-                }
-                
-            </div>
+            <Router>
+                <Fragment>
+                    <div className='container'>
+                        <Nav />
+                        {this.props.loading === true
+                            ? null
+                            : <div>
+                                <Route path='/' exact component={DashBoard} />
+                                <Route path='/questions/:question_id' component={Poll} />
+                                <Route path='/new' component={NewPoll} />
+                            </div>
+                        }
+                    </div>
+                </Fragment>
+            </Router>
         )
     }
 }
