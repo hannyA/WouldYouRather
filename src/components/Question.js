@@ -49,7 +49,7 @@ class Question extends Component {
         if (response === 'optionTwo') {
             optionTwoclassName += ' selected-answer';
         }
-        console.log("somwthing heree", optionOneclassName, optionTwoclassName )
+
         return (
                 <div className="question" onClick={(e) => this.handleClick(e, id)}>
                     <img src={avatar}

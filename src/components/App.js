@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared"
 import DashBoard from "./DashBoard"
 import Poll from './Poll'
+import NewPoll from './NewPoll'
+
 
 class App extends Component {
     componentDidMount() {
@@ -14,7 +16,7 @@ class App extends Component {
             <div>
                 {this.props.loading === true
                     ? null
-                    : <DashBoard />
+                    : <NewPoll />
                 }
                 
             </div>
