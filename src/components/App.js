@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from "../actions/shared"
 import DashBoard from "./DashBoard"
+import Poll from './Poll'
 
 class App extends Component {
     componentDidMount() {

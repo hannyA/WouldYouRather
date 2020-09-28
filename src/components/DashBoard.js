@@ -5,7 +5,7 @@ import Question from './Question'
 class DashBoard extends Component {
 
     state = {
-        answered: true
+        answered: false
     }
 
     handleClick = (e, state) => {
@@ -25,13 +25,13 @@ class DashBoard extends Component {
             <div>
                 <h3 className='center'>Questions</h3>
                 <div className='center' >
+                <button className='replying-to' onClick={(e) => this.handleClick(e, false)}>New Questions</button>
                     <button className='replying-to' onClick={(e) => this.handleClick(e, true)}>Answered</button>
-                    <button className='replying-to' onClick={(e) => this.handleClick(e, false)}>New Questions</button>
                 </div>
                 <ul className='dashboard-list'>
                 
                     {questionIds.map(id => (
-                        <li key={id}><Question id={id} /></li>
+                        <li key={id}><Question id={id} canSubmit={false} /></li>
                     ))}
 
 

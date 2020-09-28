@@ -39,6 +39,14 @@ a {
   border-width: 2px;
 }
 
+
+.pojll:focus {
+  outline: 0;
+  font-weight: 700;
+  border-width: 2px;
+}
+
+
 .center {
   text-align: center;
 }
