@@ -7,9 +7,21 @@ export function formatDate (timestamp) {
 
 export function formatQuestion (question, author, authedUser) {
 
-
   const { id, optionOne, optionTwo, timestamp } = question
   const { name, avatarURL } = author
+
+  let response = null
+
+  const userHasAnswered = optionOne.votes.includes(authedUser) || optionTwo.votes.includes(authedUser)
+  if (userHasAnswered === true) {
+
+    if (optionOne.votes.includes(authedUser)) {
+      response = 'optionOne'
+    }
+    if (optionTwo.votes.includes(authedUser)) {
+      response = 'optionTwo'
+    }
+  }
 
   return {
     name,
@@ -18,7 +30,8 @@ export function formatQuestion (question, author, authedUser) {
     optionOne,
     optionTwo,
     avatar: avatarURL,
-    hasAnswered: optionOne.votes.includes(authedUser) || optionTwo.votes.includes(authedUser)
+    hasAnswered: userHasAnswered,
+    response
     // likes: likes.length,
     // replies: replies.length,
     // hasLiked: likes.includes(authedUser),

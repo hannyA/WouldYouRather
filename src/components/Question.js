@@ -38,12 +38,19 @@ class Question extends Component {
 
         const { question } = this.props
         const {
-            name, id, timestamp, optionOne, optionTwo, avatar, hasAnswered
+            name, id, timestamp, optionOne, optionTwo, avatar, response, hasAnswered
         } = question
 
 
+        let optionOneclassName = 'question poll ',  optionTwoclassName = 'question poll '
+        if (response === 'optionOne') {
+            optionOneclassName += ' selected-answer';
+        } 
+        if (response === 'optionTwo') {
+            optionTwoclassName += ' selected-answer';
+        }
+        console.log("somwthing heree", optionOneclassName, optionTwoclassName )
         return (
-
                 <div className="question" onClick={(e) => this.handleClick(e, id)}>
                     <img src={avatar}
                         alt={`Avatar of ${name}`}
@@ -55,8 +62,8 @@ class Question extends Component {
                     </div>
                         
                     <div>
-                        <span className="question poll" onClick={(e) => this.handleChange(e, 'optionOne')}>{optionOne.text}</span>
-                        <span className="question poll" onClick={(e) => this.handleChange(e, 'optionTwo')}>{optionTwo.text}</span>
+                        <span className={optionOneclassName} onClick={(e) => this.handleChange(e, 'optionOne')}>{optionOne.text}</span>
+                        <span className={optionTwoclassName} onClick={(e) => this.handleChange(e, 'optionTwo')}>{optionTwo.text}</span>
                         {this.props.canSubmit 
                         ? <button className='btn'
                                     type='submit'

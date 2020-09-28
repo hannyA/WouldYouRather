@@ -39,8 +39,9 @@ a {
   border-width: 2px;
 }
 
+.selected-answer {background-color: coral;}
 
-.pojll:focus {
+.poll:focus {
   outline: 0;
   font-weight: 700;
   border-width: 2px;
