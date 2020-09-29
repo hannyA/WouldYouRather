@@ -18,7 +18,9 @@ class Poll extends Component {
 
         return (
             <div className=''>
-                {hasAnswered === true
+
+                { id === null ?  <div> 404 Question does not exist</div> :
+                    hasAnswered === true
                     ? <PollResult id={id} canSubmit={false} />
                     : <PollForm id={id} canSubmit={true} />
 
@@ -31,8 +33,17 @@ class Poll extends Component {
 function mapStateToProps({ authedUser, questions, users }, props) {
 
     const {id} = props.match.params
+    console.log('id', id)
+
     const question = questions[id]
+    console.log('questions', questions)
+
+    console.log('question is:', question)
+    
+    if (question === null || question === undefined) { return {id: null} }
+
     const {hasAnswered} = formatQuestion(question, users[question.author], authedUser)
+
     return {
         id,
         hasAnswered
