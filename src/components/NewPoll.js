@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { handleAddQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
 class NewPoll extends Component {
 
     state ={
+        toHome: false,
         optionOne: '',
         optionTwo: ''
     }
-
 
     handleChange = (e) => {
         e.preventDefault()
@@ -17,7 +19,7 @@ class NewPoll extends Component {
         const text = target.value
 
         this.setState({
-            [name]:text
+            [name]:text,
         })
     }
 
@@ -29,16 +31,28 @@ class NewPoll extends Component {
         console.log("SUbmit optionOne", optionOne)
         console.log("SUbmit optionTwo", optionTwo)
 
-        
+        const {dispatch} = this.props
+        dispatch(handleAddQuestion(optionOne, optionTwo ))
 
+        this.setState({
+            optionOne: '',
+            optionTwo:'',
+            toHome: true
+        })
     } 
 
 
     render() {
 
         // TODO: Redirect to / if submitted
+
         
-        const { optionOne, optionTwo} = this.state
+        const { optionOne, optionTwo, toHome} = this.state
+
+
+        if (toHome === true) {
+            return <Redirect to='/' />
+        }
 
         console.log("optionOne: ", optionOne )
         console.log("optionTwo: ", optionTwo )
@@ -77,4 +91,4 @@ class NewPoll extends Component {
     }
 }
 
-export default NewPoll
+export default connect()(NewPoll)
