@@ -24,7 +24,7 @@ class App extends Component {
                             ? null
                             : <div>
                                 <Route path='/' exact component={DashBoard} />
-                                <Route path='/questions/:question_id' component={Poll} />
+                                <Route path='/question/:id' component={Poll} />
                                 <Route path='/new' component={NewPoll} />
                             </div>
                         }

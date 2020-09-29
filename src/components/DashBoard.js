@@ -25,7 +25,7 @@ class DashBoard extends Component {
             <div>
                 <h3 className='center'>Questions</h3>
                 <div className='center' >
-                <button className='replying-to' onClick={(e) => this.handleClick(e, false)}>New Questions</button>
+                    <button className='replying-to' onClick={(e) => this.handleClick(e, false)}>New Questions</button>
                     <button className='replying-to' onClick={(e) => this.handleClick(e, true)}>Answered</button>
                 </div>
                 <ul className='dashboard-list'>

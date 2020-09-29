@@ -31,7 +31,8 @@ export function formatQuestion (question, author, authedUser) {
     optionTwo,
     avatar: avatarURL,
     hasAnswered: userHasAnswered,
-    response
+    response,
+
     // likes: likes.length,
     // replies: replies.length,
     // hasLiked: likes.includes(authedUser),

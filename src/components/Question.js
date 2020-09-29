@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { formatDate, formatQuestion } from '../utils/helpers'
 import 'antd/dist/antd.css'
 import { Button, Radio } from 'antd';
+import { Link } from 'react-router-dom'
 
 class Question extends Component {
 
@@ -14,6 +15,9 @@ class Question extends Component {
         e.preventDefault()
         console.log("Click box: ", id)
 
+
+        // open polll
+        
     }
 
     handleChange = (e, option) => {
@@ -37,9 +41,14 @@ class Question extends Component {
     render() {
 
         const { question } = this.props
+        if (question === null) {
+            return <p>This poll does not exist</p>
+        }
+
         const {
             name, id, timestamp, optionOne, optionTwo, avatar, response, hasAnswered
         } = question
+
 
 
         let optionOneclassName = 'question poll ',  optionTwoclassName = 'question poll '
@@ -51,7 +60,7 @@ class Question extends Component {
         }
 
         return (
-                <div className="question" onClick={(e) => this.handleClick(e, id)}>
+                <Link to={`/question/${id}`} className="question">
                     <img src={avatar}
                         alt={`Avatar of ${name}`}
                         className='avatar' 
@@ -72,7 +81,7 @@ class Question extends Component {
                         : null
                         }
                     </div>
-                </div>
+                </Link>
 
 
         )
@@ -85,7 +94,9 @@ function mapStateToProps({ authedUser, users, questions }, { id }) {
     
     return {
         authedUser,
-        question: formatQuestion(question, users[question.author], authedUser)
+        question: question
+        ? formatQuestion(question, users[question.author], authedUser)
+        : null
     }
 }
 
