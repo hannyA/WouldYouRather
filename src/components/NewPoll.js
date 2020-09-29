@@ -26,6 +26,10 @@ class NewPoll extends Component {
         //TODO: Add Poll to store
         console.log("SUbmit form")
         const {optionOne, optionTwo} = this.state
+        console.log("SUbmit optionOne", optionOne)
+        console.log("SUbmit optionTwo", optionTwo)
+
+        
 
     } 
 
