@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { formatDate, formatQuestion } from '../utils/helpers'
 import 'antd/dist/antd.css'
 import { Button, Radio } from 'antd';
+import { handleAnswerQuestion } from "../actions/questions"
 
 class Question extends Component {
 
@@ -33,6 +34,22 @@ class Question extends Component {
         }));
     };
 
+
+    handleSubmit  = (e) => {
+        e.preventDefault()
+        console.log('handle this submit')
+        console.log('handle this submit')
+
+        const { dispatch, id, question } = this.props
+        const answer = this.state.value === 1 ? 'optionOne' : 'optionTwo'
+
+        dispatch(handleAnswerQuestion(id, answer, question))
+
+        this.setState({
+            value:0
+        })
+
+    }
 
     render() {
 
@@ -76,26 +93,31 @@ class Question extends Component {
                             </span>
                             
                         </div>
-                        <form className='new-question'>
+                        <form className='new-question' onSubmit={this.handleSubmit}>
 
-            
-                        <div>
-                            <Radio.Group
-                                        onChange={this.onChange} 
-                                        value={value}>
-                                <Radio style={radioStyle} 
-                                        buttonStyle="solid" 
-                                        value={1}>
-                                {optionOne.text}
-                                </Radio>
-                                <Radio style={radioStyle} 
-                                        buttonStyle="solid" 
-                                        value={2}>
-                                {optionTwo.text}
-                                </Radio>
-                            </Radio.Group>
+                
+                            <div>
+                                <Radio.Group
+                                            onChange={this.onChange} 
+                                            value={value}>
+                                    <Radio style={radioStyle} 
+                                            buttonStyle="solid" 
+                                            value={1}>
+                                    {optionOne.text}
+                                    </Radio>
+                                    <Radio style={radioStyle} 
+                                            buttonStyle="solid" 
+                                            value={2}>
+                                    {optionTwo.text}
+                                    </Radio>
+                                </Radio.Group>
 
+                                <button className='btn'
+                                        type='submit'
+                                        disabled={false}>Submit
+                            </button>
 
+{/*                             
 
                         <Button block  className="question poll "
                             onClick={(e) => this.handleChange(e, 'optionOne')}>{optionOne.text}</Button>
@@ -107,7 +129,7 @@ class Question extends Component {
                                         disabled={false}>Submit
                             </button>
                             : null
-                            }
+                            } */}
                         </div>
                     </form>
                 </div>
