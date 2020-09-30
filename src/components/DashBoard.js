@@ -18,6 +18,8 @@ class DashBoard extends Component {
 
     render() {
 
+
+
         const questionIds =  this.state.answered === true 
             ? this.props.answeredQuestionIds
             : this.props.unansweredQuestionIds
@@ -45,8 +47,16 @@ class DashBoard extends Component {
 function mapStateToProps({ questions, users, authedUser }) {
 
 
+    console.log("========================")
+    console.log("========================")
+    console.log("========================")
+    console.log("========================")
+
+
     const answeredQuestions = Object.keys(users[authedUser].answers)
     const unasweredQuestions = Object.keys(questions).filter(id => !answeredQuestions.includes(id))
+    console.log("answeredQuestions: ",answeredQuestions )
+    console.log("unasweredQuestions: ",unasweredQuestions )
 
     return {
         answeredQuestionIds: answeredQuestions
