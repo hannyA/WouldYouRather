@@ -1,8 +1,19 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { NavLink } from 'react-router-dom'
 
 
-export default function Nav() {
+class Nav extends Component {
+
+    handleSubmit  = (e) => {
+        e.preventDefault()
+        console.log('handle this submit')
+        console.log('handle this submit')
+
+        this.props.handleLogin(false)
+    }
+
+
+    render() {
     return (
         <nav className='nav'>
             <ul>
@@ -21,9 +32,20 @@ export default function Nav() {
                         leaderboard
                     </NavLink>
                 </li>
+                {this.props.loggedIn && (
+                    <li >
+                    
+                    {/* TODO: Setup log out */}
+                    <NavLink to='/' onClick={this.handleSubmit}  exact activeClassName='active'>
+                        Log out
+                    </NavLink>
+                </li>
+                )}
 
             </ul>
         
         </nav>
-    )
+    )}
 }
+
+export default Nav
