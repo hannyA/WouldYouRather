@@ -42,6 +42,7 @@ export function formatQuestion (question, author, authedUser) {
     // }
   }
 
+
   
   // tylermcginnis: {
   //   id: 'tylermcginnis',
@@ -69,4 +70,16 @@ export function formatQuestion (question, author, authedUser) {
 
 
     
-  }
+}
+
+
+export function formatUser(user) {
+  const { name, avatarURL, answers, questions} = user
+
+  return {
+    name,
+    avatar: avatarURL,
+    answers: Object.keys(answers).length,
+    questions: questions.length
+    }
+}

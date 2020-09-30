@@ -38,7 +38,6 @@ import { RECEIVE_QUESTIONS, ADD_QUESTION, ANSWER_QUESTION } from '../actions/que
  }
 
 
-
 //  ...questions,
 //  [qid]: {
 //    ...questions[qid],

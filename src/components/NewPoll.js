@@ -21,7 +21,7 @@ class NewPoll extends Component {
         this.setState({
             [name]:text,
         })
-    }
+    } 
 
     handleSubmit = (e) => {
         e.preventDefault()
