@@ -12,13 +12,13 @@ import { ADD_QUESTION, ANSWER_QUESTION  } from '../actions/questions'
             }
         case ADD_QUESTION:
 
-            const { question } = action
+            const {author, id} = action.question
+
             return {
                 ...state,
-                [question.authedUser]: {
-                    ...state[question.authedUser],
-                    questions: users[question.authedUser].questions.concat([question.id])
-                    
+                [author]: {
+                    ...state[author],
+                    questions: state[author].questions.concat([id])
                 }
             }
         case ANSWER_QUESTION:
