@@ -69,7 +69,7 @@ class Login extends Component {
 }
 
 
-function mapStateToProps({authedUser, users, questions}, {handleLogin}) {
+function mapStateToProps({authedUser, users, questions}) {
 
 
     // const usersa = Object.keys(users)
@@ -79,7 +79,6 @@ function mapStateToProps({authedUser, users, questions}, {handleLogin}) {
 
     return {
         users: users,
-        handleLogin
     }
 }
 

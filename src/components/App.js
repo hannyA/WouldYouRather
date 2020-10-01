@@ -9,6 +9,8 @@ import NewPoll from './NewPoll'
 import Nav from './Nav'
 import LeaderBoard from './LeaderBoard'
 import Login from './Login'
+import Header from './Header'
+import { handleAuthedUser } from '../actions/authedUser'
 
 class App extends Component {
 
@@ -20,24 +22,27 @@ class App extends Component {
         this.props.dispatch(handleInitialData())
     }
     
-    handleLogin = (logged) => {
-        this.setState({
-            loggedIn: logged
-        })   
-    }
+    // handleLogin = (logged) => {
+    //     this.setState({
+    //         loggedIn: logged
+    //     })   
+    // }
 
     handleLogout = () => {
-        this.setState({
-            loggedIn: false
-        })
+        const { dispatch } = this.props
+        dispatch(handleAuthedUser(null))
     }
+
+    isLoggedIn = () => (
+        this.props.authedUser !== null
+    )
 
     render() {
 
         console.log("===========================")
         console.log("===========================")
         console.log("===========================")
-        console.log("===========================")
+        console.log("===========================", this.handleLogout)
         console.log("===========================")
         console.log("===========================")
         console.log("===========================")
@@ -49,18 +54,20 @@ class App extends Component {
                 <Fragment>
                     <LoadingBar />
                     <div className='container'>
-                    <h1 className='center'>Would you rather...</h1>
-                        {this.props.authedUser !== null
-                        ? (this.props.loading === true
-                            ? null
-                            : <div>
-                                <Nav loggedIn={this.state.loggedIn} handleLogout={this.handleLogout} />
-                                <Route path='/' exact component={DashBoard} />
-                                <Route path='/question/:id' component={Poll} />
-                                <Route path='/add' component={NewPoll} />
-                                <Route path='/leaderboard' component={LeaderBoard} />
-                              </div>
-                        ): <Login handleLogin={this.handleLogin} />
+                        <h1 className='center'>Would you rather...</h1>
+                            {this.isLoggedIn()
+                            ? (this.props.loading === true
+                                ? null
+                                : <div>
+                                    <div>
+                                        <Nav loggedIn={this.isLoggedIn()} handleLogout={this.handleLogout} />
+                                        <Route path='/' exact component={DashBoard} />
+                                        <Route path='/question/:id' component={Poll} />
+                                        <Route path='/add' component={NewPoll} />
+                                        <Route path='/leaderboard' component={LeaderBoard} />
+                                    </div>
+                                 </div>
+                            ): <Login />
                         }
                     </div>
                 </Fragment>

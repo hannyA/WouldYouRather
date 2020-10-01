@@ -149,7 +149,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
 export function _authenticateUser(info) {
   return new Promise((res, rej) => {
     const {id} = info
-    setTimeout(() => res(Object.keys(users).find(user => user === id )), 1000)
+    setTimeout(() => res(Object.keys(users).find(user => user === id )), 500)
   })
 }
 

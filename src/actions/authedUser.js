@@ -21,3 +21,18 @@ export function handleAuthedUser(id) {
         .then(() => dispatch(hideLoading()))
     }
 }
+
+
+export function handleLogoutUser() {
+    const id = null
+    return (dispatch) => {
+
+        dispatch(showLoading())
+        return authenticateUser({
+            id
+        })
+        .then((authId) =>  dispatch(setAuthedUser(id)
+        ))
+        .then(() => dispatch(hideLoading()))
+    }
+}
