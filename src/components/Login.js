@@ -2,18 +2,32 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import User from './User'
 import { formatUser } from "../utils/helpers"
-
+// import { authedUser } from "../reducers/authedUser";
+import { handleAuthedUser } from '../actions/authedUser'
 //TODO: Fix login format
 class Login extends Component {
 
+    state = {
+        username: '',
+        password: ''
+    }
 
+    handleChange = (e) => {
+        const a = e.target.value
+        console.log('username: ', a)
+        this.setState({
+            username: a
+        })
+    }
 
     handleSubmit  = (e) => {
         e.preventDefault()
-        console.log('handle this submit')
-        console.log('handle this submit')
+        console.log('Login this submit')
+        console.log('Login this submit')
 
-        this.props.handleLogin(true)
+        const { dispatch } = this.props
+
+        dispatch(handleAuthedUser( this.state.username ))
     }
 
 
@@ -33,8 +47,8 @@ class Login extends Component {
                 <label htmlFor="optionOne">Username:</label>
                 <input  id="optionOne" 
                         name='optionOne'
-                        // value={optionOne} 
-                        // onChange={this.handleChange}
+                        value={this.state.username} 
+                        onChange={this.handleChange}
                         />
                 
                 <label htmlFor="optionTwo">Password:</label>

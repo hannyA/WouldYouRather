@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatUser } from "../utils/helpers";
+
+//TODO: Rename class
 class User extends Component {
 
     render() {
         const { name, avatar, answers, questions} = this.props.user
-
-        console.log('==========')
-        console.log('==========')
-
-        console.log('==========')
-        console.log("ADWD user:", this.props.user)
-
-
         return (
             <div> 
                 <div>{name}</div>
@@ -31,9 +25,6 @@ class User extends Component {
 function mapStateToProps({authedUser, users, questions}, {id} ) {
 
     const user = users[id]
-
-    console.log("AFA user:", user)
-    console.log("AFA users:", users)
     
     return {
         user: user

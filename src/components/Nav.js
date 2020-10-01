@@ -9,7 +9,7 @@ class Nav extends Component {
         console.log('handle this submit')
         console.log('handle this submit')
 
-        this.props.handleLogin(false)
+        this.props.handleLogout()
     }
 
 
@@ -36,7 +36,7 @@ class Nav extends Component {
                     <li >
                     
                     {/* TODO: Setup log out */}
-                    <NavLink to='/' onClick={this.handleSubmit}  exact activeClassName='active'>
+                    <NavLink to='/' onClick={this.handleSubmit}  exact>
                         Log out
                     </NavLink>
                 </li>
