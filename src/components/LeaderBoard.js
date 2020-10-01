@@ -39,8 +39,8 @@ function mapStateToProps({authedUser, users, questions}) {
 
     return {
         users: usersa
-        .sort((a,b) => (Object.keys(users[b].answers).length + Object.keys(users[b].answers).length) 
-        - (Object.keys(users[a].answers).length + Object.keys(users[a].answers).length))
+        .sort((a,b) => (Object.keys(users[b].answers).length + Object.keys(users[b].questions).length) 
+        - (Object.keys(users[a].answers).length + Object.keys(users[a].questions).length))
     }
 }
 
