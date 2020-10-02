@@ -24,9 +24,9 @@ class LeaderBoard extends Component {
                 </ul>
             </div>
         )
-    }
+    } 
 }
-
+ 
 
 function mapStateToProps({authedUser, users, questions}) {
 
